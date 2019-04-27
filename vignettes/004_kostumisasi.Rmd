@@ -127,6 +127,8 @@ Selain dengan menggunakan *preset theme* dari ggplot2 atau meracik tema sendiri,
 
 ```{r facet-plot_household}
 plot_household +
-  facet_wrap(~year)
+  #facet_wrap(~year) #3 tipe representasi graphik
+  facet_grid(~year)
+  #facet_grid(~year~.)
 ```
 
