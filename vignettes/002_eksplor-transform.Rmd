@@ -19,24 +19,24 @@ Sebelum melakukan pembuatan grafik, Anda harus terlebih dahulu mengetahui inform
 
 ```{r explore-iris1}
 iris # mencetak data di konsol
-dim(iris) # ___
-str(iris) # ___
-colnames(iris) # ___
-head(iris) # ___
-tail(iris) # ___
-summary(iris) # ___
+dim(iris) # return atau set sebuah dimensi sebuah object (ada berapa kolom dan row)
+str(iris) # menampilkan struktur internal object R (detail setiap kolom seperti value dan penjelasan)
+colnames(iris) # menampilkan semua colomn name
+head(iris) # menampilkan 6 baris pertama
+tail(iris) # menampilkan 6 baris terakhir
+summary(iris) # menampilkan info seperti median,min,max,mean setiap kolom
 iris$Sepal.Length # ekstraksi kolom 'Sepal.Length' dari dataset iris. Jalankan help(`[`) untuk membaca dokumentasi
-class(iris$Species) # ___
-length(iris$Petal.Width) # ___
-levels(iris$Species) # ___
-length(levels(iris$Species)) # ___
-unique(iris$Species) # ___
-length(unique(iris$Species)) # ___
-mean(iris$Sepal.Length) # ___
-sd(iris$Sepal.Length) # ___
-median(iris$Sepal.Width) # ___
-sum(iris$Petal.Length) # ___
-cor(iris[, -5]) # ___
+class(iris$Species) # menampilkan tipe data sepcies
+length(iris$Petal.Width) # menampilkan jumlah kolom "petal.width" di tabel "iris"
+levels(iris$Species) # menampilkan value apa saja yang ada di kolom species di table iris
+length(levels(iris$Species)) # menampilkan jumlah level yang ada di kolom species di table iris
+unique(iris$Species) # menampilkan value unik dan duplikat di hilangkan
+length(unique(iris$Species)) # menampilkan jumlah value unik di kolom species di table iris
+mean(iris$Sepal.Length) # kalkulasi mean kolom sepal.length
+sd(iris$Sepal.Length) # kalkulasi standard deviation sepal.length
+median(iris$Sepal.Width) # kalkulasi median kolom sepal.width
+sum(iris$Petal.Length) # menjumlahkan total nilai petal.length
+cor(iris[, -5]) #kalkulasi variansis antar kolom
 ```
 
 Selain fungsi-fungsi di atas Anda juga dapat mendapat informasi mengenai dataset dengan menggunakan fungsi `vis_dat()` dari paket `visdat` dan fungsi `skim()` dari paket `skimr`. Pasanglah kedua paket tersebut terlebih dahulu melalui menu **Tools -- Install Packages...** jika Anda belum memasangnya. Perhatikan contoh penggunaan fungsi `vis_dat()` dan `skim()` pada *chunk* berikut!
@@ -47,8 +47,8 @@ library(skimr)
 
 typical_data # mencetak dataset typical_data
 
-vis_dat(typical_data)
-skim(typical_data)
+vis_dat(typical_data) #menampilkan grafik yang menunjukan kolom serta tipe datanya
+skim(typical_data) #dicetak di console dan tulisan, bukan grafik
 ```
 
 ## Transformasi Data
@@ -56,7 +56,7 @@ skim(typical_data)
 Aktivitas pembuatan grafik tidak dapat dilepaskan dari aktivitas transformasi data. Salah satu paket yang umum digunakan untuk melakukan transformasi data adalah dplyr. Sekarang aktifkanlah paket tersebut dengan cara mengganti bagian ___ dengan jawaban yang tepat! (Catatan: jika Anda belum memasang paket dplyr, pasanglah paket tersebut terlebih dahulu melalui menu **Tools -- Install Packages...**)
 
 ```{r load-package}
-library(___)
+library(dplyr)
 ```
 
 Terdapat beberapa fungsi utama dari paket dplyr untuk melakukan transformasi data, diantaranya:
@@ -98,10 +98,10 @@ identical(storms_nopipe, storms_pipe) # membandingkan dua dataset, hasilnya TRUE
 
 Buatlah rangkuman tahapan-tahapan apa yang dilakukan untuk melakukan transformasi dataset storms diatas!
 
-1. ___
-2. ___
-3. ___
-4. ___
-5. ___
+1. (select) select kolom year,month,wind, preassure dari dataset storm
+2. (filter) memilih barus dengan tahun antara 2000 hingga 2015
+3. (mutate) mengubah nilai dari kolom month yang semula angka menjajdii nama bulan
+4. (group_by) melakukan grouping berdasarkan kolom month
+5. (summarise) menghitung rerata kecepatan angin dan rerata tekana udara
 
 Sekarang Anda dipersilahkan klik tombol **Knit** atau menjalankan pemintas **Ctrl + Shift + K** untuk mengkonversi dokumen R Markdown ini menjadi dokumen final (dokumen berekstensi .md). Kemudian silakan unggah hasil kerja Anda ke repositori GitHub dengan cara yang telah ditunjukan oleh instruktur. Setelah berhasil, silakan akses berkas 002_eksplor-transform.md dalam direktori vignettes di repositori GitHub milik Anda tersebut.
